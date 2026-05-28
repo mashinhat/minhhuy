@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trần Minh Huy - Portfolio 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@300;500;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        :root { --primary: #2563eb; --bg: #f1f5f9; --text: #0f172a; --card: rgba(255, 255, 255, 0.8); }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); transition: all 0.5s ease; }
+        
+        /* GGMU MODE - Cực mạnh */
+        body.ggmu-mode { --bg: #050505; --text: #ffffff; --primary: #da291c; --card: rgba(20, 20, 20, 0.9); }
+        body.ggmu-mode { background-image: radial-gradient(circle at 50% 50%, #da291c33 0%, #000 100%); }
+
+        .glass { background: var(--card); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .bento-item { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .bento-item:hover { transform: translateY(-10px); scale: 1.02; }
+
+        /* Animation cho Logo */
+        #main-logo { cursor: pointer; user-select: none; }
+        .logo-box { fill: #2563eb; transition: fill 0.5s; }
+        .ggmu-mode .logo-box { fill: #da291c; }
+        
+        #math-canvas { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.2; pointer-events: none; }
+    </style>
+</head>
+<body>
+
+    <canvas id="math-canvas"></canvas>
+
+    <!-- Header chuẩn theo hình anh gửi -->
+    <header class="sticky top-0 z-50 glass px-6 py-4 flex justify-between items-center border-b border-gray-200">
+        <div id="main-logo" class="flex items-center gap-4" onclick="handleLogoClick()">
+            <!-- Logo Lục Giác giống hình anh gửi -->
+            <svg width="60" height="60" viewBox="0 0 100 100">
+                <path d="M50 5 L90 25 L90 75 L50 95 L10 75 L10 25 Z" fill="none" stroke="#1e293b" stroke-width="4"/>
+                <rect x="25" y="30" width="50" height="40" class="logo-box" />
+                <text x="50" y="58" font-family="Montserrat" font-size="22" font-weight="900" text-anchor="middle" fill="white">MH</text>
+                <!-- Chi tiết: Thước kẻ và Đai đen -->
+                <line x1="50" y1="20" x2="50" y2="80" stroke="#1e293b" stroke-width="1" stroke-dasharray="2,2"/>
+                <path d="M40 85 L60 85" stroke="black" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+            <div>
+                <h1 class="text-2xl font-black tracking-tighter leading-none">MINH HUY</h1>
+                <p class="text-xs font-bold text-gray-500 uppercase tracking-widest">The Red Devil Mathlete</p>
+            </div>
+        </div>
+        <button onclick="toggleGGMU()" class="bg-red-600 text-white text-[10px] font-black px-4 py-2 rounded-md hover:bg-red-700 transition shadow-lg">MODE MU</button>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-16">
+        <!-- Hero Section -->
+        <section class="flex flex-col md:flex-row gap-16 items-center mb-32">
+            <div class="flex-1 space-y-8">
+                <h2 class="text-7xl md:text-8xl font-black leading-none uppercase tracking-tighter" style="font-family: Montserrat">
+                    TRẦN <span id="name-highlight" class="text-blue-600 transition-all duration-500">MINH HUY</span>
+                </h2>
+                <p class="text-xl font-medium opacity-70 leading-relaxed max-w-lg">
+                    Lớp 9/9 Nguyễn Tri Phương. Sự kết hợp giữa tư duy Toán học đỉnh cao và bản lĩnh của một võ sĩ Karate.
+                </p>
+                <div class="flex gap-4">
+                    <span class="px-6 py-2 glass border border-gray-300 rounded-full text-xs font-black uppercase">Đai đen Karate</span>
+                    <span class="px-6 py-2 glass border border-red-600 text-red-600 rounded-full text-xs font-black uppercase">Fan MU</span>
+                </div>
+            </div>
+            <div class="flex-1 relative">
+                <img src="huy-tot-nghiep.jpg" class="rounded-[3rem] shadow-2xl w-full aspect-[4/5] object-cover relative z-10 border-8 border-white">
+                <div class="absolute inset-0 bg-blue-600 rounded-[3rem] rotate-6 -z-10 opacity-20"></div>
+            </div>
+        </section>
+
+        <!-- Bento Thành tích -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-32">
+            <div class="md:col-span-2 md:row-span-2 glass p-10 rounded-[3rem] bento-item flex flex-col justify-between border-t-8 border-blue-600">
+                <div>
+                    <p class="text-blue-600 font-black text-xs uppercase mb-2">Thành tích nổi bật</p>
+                    <h3 class="text-5xl font-black mb-6 uppercase">Giải Nhì TP</h3>
+                    <p class="text-lg opacity-70 mb-8">Học sinh giỏi Giải Toán trên máy tính cầm tay cấp Thành phố 2025-2026.</p>
+                </div>
+                <img src="giay-khen.jpg" class="rounded-2xl w-full h-64 object-cover shadow-lg">
+            </div>
+
+            <div class="glass p-10 rounded-[3rem] bento-item flex flex-col items-center justify-center text-center">
+                <span class="text-8xl font-black text-blue-600 leading-none">09</span>
+                <p class="text-[10px] font-black uppercase opacity-50 mt-4">Năm liền đạt<br>HS Xuất Sắc</p>
+            </div>
+
+            <div class="glass p-10 rounded-[3rem] bento-item bg-stone-950 text-white flex flex-col justify-end">
+                <h4 class="text-2xl font-black">KARATE</h4>
+                <p class="text-xs font-bold text-yellow-500 uppercase tracking-widest">Huyền đai đệ nhất đẳng</p>
+            </div>
+
+            <div class="md:col-span-2 glass p-8 rounded-[3rem] bento-item flex items-center justify-between">
+                <div>
+                    <h4 class="text-2xl font-black uppercase">Nguyễn Tri Phương</h4>
+                    <p class="text-[10px] font-bold opacity-50 uppercase tracking-widest">Trường THCS Quận 10</p>
+                </div>
+                <img src="logo-ntp.jpg" class="w-24 h-24 object-contain">
+            </div>
+        </div>
+
+        <!-- Nhạc Spotify -->
+        <section class="mb-32">
+            <div class="glass p-4 rounded-[2.5rem] shadow-2xl">
+                <iframe style="border-radius:24px" src="https://open.spotify.com/embed/album/1PcVnGylH7vOraRn4mGSF5?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+        </section>
+
+        <!-- Lời nhắn từ Ba -->
+        <footer class="glass p-16 rounded-[4rem] text-center relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-2 bg-red-600"></div>
+            <p class="text-xs font-black uppercase opacity-40 mb-6 tracking-[0.5em]">Message from Dad</p>
+            <p class="text-3xl md:text-5xl font-bold italic mb-10 leading-tight">
+                "Hành trình lớp 10 sắp bắt đầu. Hãy cứ vững tin, vì ba luôn ở phía sau con!"
+            </p>
+            <div class="text-5xl font-black text-red-600">#GGMU 🚩</div>
+        </footer>
+    </main>
+
+    <script>
+        // 1. Math Background
+        const canvas = document.getElementById('math-canvas');
+        const ctx = canvas.getContext('2d');
+        let symbols = ['π', '∞', '∑', '√', 'Δ', '∫', 'MH', 'MU', '10'];
+        let particles = [];
+
+        function init() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            for(let i=0; i<40; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    t: symbols[Math.floor(Math.random()*symbols.length)],
+                    s: Math.random() * 0.5 + 0.2,
+                    o: Math.random() * 0.3
+                });
+            }
+        }
+        function draw() {
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            particles.forEach(p => {
+                ctx.font = "15px Montserrat";
+                ctx.fillStyle = `rgba(37, 99, 235, ${p.o})`;
+                ctx.fillText(p.t, p.x, p.y);
+                p.y -= p.s;
+                if(p.y < -20) p.y = canvas.height + 20;
+            });
+            requestAnimationFrame(draw);
+        }
+        window.onresize = init; init(); draw();
+
+        // 2. GGMU Mode Logic
+        function toggleGGMU() {
+            document.body.classList.toggle('ggmu-mode');
+            const name = document.getElementById('name-highlight');
+            if(document.body.classList.contains('ggmu-mode')) {
+                name.style.color = '#da291c';
+                gsap.to("#main-logo", { rotation: 360, duration: 0.8, ease: "back.out" });
+            } else {
+                name.style.color = '#2563eb';
+                gsap.to("#main-logo", { rotation: 0, duration: 0.8 });
+            }
+        }
+
+        let count = 0;
+        function handleLogoClick() {
+            count++;
+            // Hiệu ứng rung khi click
+            gsap.to("#main-logo", { x: 5, yoyo: true, repeat: 5, duration: 0.05 });
+            
+            if(count >= 3) {
+                toggleGGMU();
+                count = 0;
+            }
+            // Reset nếu click quá chậm
+            setTimeout(() => { count = 0; }, 2000);
+        }
+
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from(".bento-item", { scrollTrigger: ".grid", y: 50, opacity: 0, stagger: 0.2, duration: 1 });
+    </script>
+</body>
+</html>

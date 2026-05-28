@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trần Minh Huy - The Balanced Equation | Portfolio 2026</title>
+    <meta name="description" content="Trần Minh Huy - Học sinh xuất sắc THCS Nguyễn Tri Phương, Giải Nhì Toán Thành phố, Huyền đai Karate. Giáo viên Toán tương lai.">
+    <meta property="og:title" content="Trần Minh Huy - The Balanced Equation">
+    <meta property="og:description" content="Portfolio cá nhân Trần Minh Huy - Lớp 9/9 THCS Nguyễn Tri Phương">
+    <meta property="og:image" content="mh-logo.png">
+    <link rel="icon" type="image/png" href="mh-logo.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=Montserrat:wght@700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* =============================================
+           CSS VARIABLES
+           ============================================= */
+        :root {
+            --bg: #060608;
+            --primary: #da291c;
+            --primary-glow: rgba(218, 41, 28, 0.5);
+            --primary-deep: #8b1a12;
+            --gold: #FFD700;
+            --gold-glow: rgba(255, 215, 0, 0.3);
+            --text: #ffffff;
+            --glass: rgba(14, 14, 18, 0.8);
+            --glass-hover: rgba(24, 24, 32, 0.9);
+            --border: rgba(218, 41, 28, 0.2);
+            --border-glow: rgba(218, 41, 28, 0.5);
+            --shadow: rgba(218, 41, 28, 0.15);
+            --gradient: linear-gradient(160deg, #060608 0%, #0d0a0f 40%, #120a08 100%);
+            --gradient-card: linear-gradient(145deg, rgba(218,41,28,0.06), rgba(255,215,0,0.02), rgba(0,0,0,0));
+        }
+
+        .blue-mode {
+            --bg: #f0f2f8;
+            --primary: #2563eb;
+            --primary-glow: rgba(37, 99, 235, 0.4);
+            --primary-deep: #1d4ed8;
+            --gold: #f59e0b;
+            --gold-glow: rgba(245, 158, 11, 0.3);
+            --text: #1e293b;
+            --glass: rgba(255, 255, 255, 0.65);
+            --glass-hover: rgba(255, 255, 255, 0.85);
+            --border: rgba(37, 99, 235, 0.15);
+            --border-glow: rgba(37, 99, 235, 0.4);
+            --shadow: rgba(0, 0, 0, 0.08);
+            --gradient: linear-gradient(160deg, #e8ecf8 0%, #f0f4ff 40%, #f8f6f0 100%);
+            --gradient-card: linear-gradient(145deg, rgba(37,99,235,0.04), rgba(0,0,0,0));
+        }
+
+        /* =============================================
+           RESET & BASE
+           ============================================= */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--gradient);
+            background-attachment: fixed;
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: background 0.8s ease, color 0.5s ease;
+            perspective: 1200px;
+        }
+
+        /* =============================================
+           AMBIENT BACKGROUND ORBS (depth layers)
+           ============================================= */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: -1;
+            animation: orbFloat 8s ease-in-out infinite alternate;
+        }
+        .orb-1 {
+            width: 400px; height: 400px;
+            background: var(--primary-glow);
+            top: -100px; right: -100px;
+            opacity: 0.25;
+            animation-duration: 10s;
+        }
+        .orb-2 {
+            width: 300px; height: 300px;
+            background: var(--gold-glow);
+            bottom: 10%; left: -80px;
+            opacity: 0.15;
+            animation-duration: 12s;
+            animation-delay: -3s;
+        }
+        .orb-3 {
+            width: 250px; height: 250px;
+            background: var(--primary-glow);
+            top: 50%; right: 5%;
+            opacity: 0.1;
+            animation-duration: 14s;
+            animation-delay: -6s;
+        }
+        @keyframes orbFloat {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, -40px) scale(1.15); }
+        }
+
+        /* =============================================
+           GLASSMORPHISM — DEEP
+           ============================================= */
+        .glass {
+            background: var(--glass);
+            backdrop-filter: blur(28px) saturate(1.6);
+            -webkit-backdrop-filter: blur(28px) saturate(1.6);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Multi-layer shadow for DEPTH */
+            box-shadow:
+                0 1px 2px rgba(0,0,0,0.1),
+                0 4px 8px rgba(0,0,0,0.1),
+                0 16px 32px var(--shadow),
+                0 32px 64px rgba(0,0,0,0.15),
+                inset 0 1px 0 rgba(255,255,255,0.06);
+        }
+        .glass:hover {
+            background: var(--glass-hover);
+            border-color: var(--border-glow);
+            box-shadow:
+                0 1px 2px rgba(0,0,0,0.1),
+                0 8px 16px rgba(0,0,0,0.12),
+                0 24px 48px var(--shadow),
+                0 48px 80px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.1),
+                0 0 40px var(--primary-glow);
+        }
+
+        /* =============================================
+           HEADER
+           ============================================= */
+        header {
+            position: fixed;
+            top: 16px; left: 50%;
+            transform: translateX(-50%);
+            width: 94%; max-width: 1100px;
+            padding: 10px 24px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+        }
+
+        .logo-group {
+            display: flex; align-items: center; gap: 14px;
+            cursor: pointer; user-select: none;
+        }
+
+        .logo-crest {
+            width: 48px; height: 56px;
+            filter: drop-shadow(0 0 12px var(--primary-glow));
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+        }
+        .logo-crest:hover {
+            transform: scale(1.15) rotate(-5deg);
+            filter: drop-shadow(0 0 24px var(--primary-glow)) drop-shadow(0 0 48px var(--primary-glow));
+        }
+        .logo-crest .crest-fill { fill: var(--primary); transition: fill 0.5s ease; }
+        .logo-crest .crest-gold { fill: var(--gold); transition: fill 0.5s ease; }
+        .logo-crest .crest-white { fill: #fff; }
+        .logo-crest .crest-dark { fill: #0e0e12; }
+        .blue-mode .logo-crest .crest-dark { fill: #dde4f0; }
+
+        .logo-text { line-height: 1.15; }
+        .logo-text .name { font-weight: 900; font-size: 19px; letter-spacing: -0.3px; }
+        .logo-text .subtitle { font-size: 8.5px; font-weight: 800; opacity: 0.45; letter-spacing: 2px; text-transform: uppercase; }
+
+        .btn-mode {
+            background: linear-gradient(135deg, var(--primary), var(--primary-deep));
+            color: white; border: none;
+            padding: 10px 22px; border-radius: 14px;
+            font-weight: 800; font-size: 10px;
+            text-transform: uppercase; letter-spacing: 1.2px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px var(--shadow), 0 0 0 1px rgba(255,255,255,0.05) inset;
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative; overflow: hidden;
+        }
+        .btn-mode:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 35px var(--primary-glow), 0 0 0 1px rgba(255,255,255,0.1) inset;
+        }
+        .btn-mode::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.15), transparent 30%);
+            animation: btnShine 3s linear infinite;
+        }
+        @keyframes btnShine { 100% { transform: rotate(360deg); } }
+
+        /* =============================================
+           CONTAINER
+           ============================================= */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 130px 20px 40px;
+        }
+
+        /* =============================================
+           HERO — Single column, image focal point
+           ============================================= */
+        .hero {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .hero-text h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(44px, 8vw, 90px);
+            line-height: 0.85;
+            letter-spacing: -3px;
+        }
+        .hero-text span.highlight {
+            display: block;
+            background: linear-gradient(135deg, var(--primary), #ff6b4a, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 30px var(--primary-glow));
+            animation: textShimmer 4s ease-in-out infinite alternate;
+        }
+        @keyframes textShimmer {
+            0% { filter: drop-shadow(0 0 20px var(--primary-glow)) brightness(1); }
+            100% { filter: drop-shadow(0 0 40px var(--primary-glow)) brightness(1.15); }
+        }
+
+        .hero-slogan {
+            font-size: 17px; font-weight: 400; opacity: 0.65;
+            margin: 24px auto 0; max-width: 520px; line-height: 1.65; font-style: italic;
+        }
+        .hero-slogan strong { color: var(--primary); font-weight: 700; opacity: 1; -webkit-text-fill-color: var(--primary); }
+
+        .hero-badges { display: flex; gap: 8px; margin-top: 22px; flex-wrap: wrap; justify-content: center; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 5px;
+            padding: 6px 14px; border-radius: 10px;
+            font-size: 11px; font-weight: 700;
+            background: var(--glass); border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .hero-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px var(--shadow);
+            border-color: var(--border-glow);
+        }
+
+        .hero-img-wrapper {
+            position: relative;
+            margin-top: 36px;
+        }
+        .hero-img-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: -16px; left: 8%; right: 8%;
+            height: 50px;
+            background: var(--primary-glow);
+            filter: blur(35px);
+            border-radius: 50%;
+            opacity: 0.35;
+            z-index: -1;
+        }
+        .hero-img {
+            width: 100%;
+            aspect-ratio: 16/8;
+            object-fit: cover;
+            object-position: center 30%;
+            border-radius: 28px;
+            border: 2px solid rgba(255,255,255,0.08);
+            display: block;
+            box-shadow:
+                0 8px 16px rgba(0,0,0,0.3),
+                0 24px 48px rgba(0,0,0,0.3),
+                0 48px 80px rgba(0,0,0,0.2),
+                0 0 0 1px rgba(255,255,255,0.05) inset;
+        }
+
+        /* =============================================
+           BENTO GRID
+           ============================================= */
+        .bento {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--gradient-card);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+        /* Shine sweep on hover */
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+            transition: left 0.7s ease;
+            pointer-events: none;
+        }
+        .card:hover::after { left: 150%; }
+        .card:hover {
+            transform: translateY(-8px) scale(1.015);
+            border-color: var(--border-glow);
+        }
+
+        .card-large { grid-column: span 2; grid-row: span 2; }
+        .card-medium { grid-column: span 2; }
+        .card-full { grid-column: span 4; }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900; font-size: 26px;
+            margin: 0 0 10px; letter-spacing: -0.8px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 10px; border-radius: 8px;
+            font-size: 9px; font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--primary-deep));
+            color: white;
+            margin-bottom: 14px;
+            text-transform: uppercase; letter-spacing: 1px;
+            box-shadow: 0 2px 10px var(--shadow);
+        }
+        .card-img {
+            width: 100%;
+            border-radius: 16px;
+            margin-top: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.03) inset;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s ease;
+        }
+        .card:hover .card-img {
+            transform: scale(1.03) rotateX(1deg);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.4), 0 0 30px var(--primary-glow);
+        }
+
+        .stat-number {
+            font-size: 72px; font-weight: 900;
+            color: var(--primary); line-height: 1;
+            text-shadow: 0 0 40px var(--primary-glow), 0 4px 8px rgba(0,0,0,0.3);
+            transition: text-shadow 0.4s ease, transform 0.4s ease;
+        }
+        .card:hover .stat-number {
+            text-shadow: 0 0 60px var(--primary-glow), 0 0 120px var(--primary-glow), 0 4px 8px rgba(0,0,0,0.4);
+            transform: scale(1.08);
+        }
+        .stat-label {
+            font-size: 10px; font-weight: 900;
+            opacity: 0.45; text-align: center;
+            margin-top: 8px; letter-spacing: 1px;
+        }
+
+        /* Spotify in Bento */
+        .spotify-bento {
+            border-radius: 14px; overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            transition: box-shadow 0.4s ease;
+        }
+        .card:hover .spotify-bento {
+            box-shadow: 0 12px 36px rgba(0,0,0,0.4), 0 0 20px rgba(30,215,96,0.15);
+        }
+        .music-label {
+            display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+        }
+        .music-label .emoji {
+            font-size: 28px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-8px) rotate(-5deg); }
+            75% { transform: translateY(-4px) rotate(3deg); }
+        }
+
+        /* YouTube in Bento */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; height: 0;
+            overflow: hidden; border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            transition: box-shadow 0.4s ease;
+        }
+        .card:hover .video-wrapper {
+            box-shadow: 0 16px 48px rgba(0,0,0,0.4), 0 0 30px rgba(255,0,0,0.1);
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border: 0; border-radius: 16px;
+        }
+        .yt-fallback {
+            display: none;
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-radius: 16px;
+            flex-direction: column; align-items: center; justify-content: center;
+            gap: 14px; text-decoration: none; color: white;
+            transition: all 0.4s ease;
+        }
+        .yt-fallback:hover {
+            background: linear-gradient(135deg, #2a2a3e, #26315e);
+            box-shadow: 0 0 40px rgba(255,0,0,0.2);
+        }
+        .yt-fallback .play-icon {
+            width: 64px; height: 64px;
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 8px 30px rgba(255,0,0,0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .yt-fallback:hover .play-icon {
+            transform: scale(1.1);
+            box-shadow: 0 12px 40px rgba(255,0,0,0.6);
+        }
+        .yt-fallback span { font-size: 13px; font-weight: 700; opacity: 0.8; }
+
+        .youtube-label {
+            display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+        }
+        .youtube-label .emoji { font-size: 24px; }
+
+        /* =============================================
+           FOOTER
+           ============================================= */
+        footer {
+            padding: 60px 40px 40px;
+            text-align: center;
+            border-radius: 32px 32px 0 0;
+            position: relative; overflow: hidden;
+        }
+        footer::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--gold), var(--primary), transparent);
+            animation: footerGlow 3s ease-in-out infinite alternate;
+        }
+        @keyframes footerGlow {
+            0% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+        .footer-label {
+            font-size: 10px; font-weight: 900; opacity: 0.35;
+            letter-spacing: 6px; margin-bottom: 18px; text-transform: uppercase;
+        }
+        .footer-message {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 700; font-style: italic;
+            background: linear-gradient(135deg, var(--primary), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.3;
+            filter: drop-shadow(0 0 20px var(--primary-glow));
+        }
+        .footer-sub { margin-top: 14px; font-size: 13px; opacity: 0.35; }
+        .footer-year { margin-top: 30px; font-size: 10px; opacity: 0.15; letter-spacing: 3px; }
+
+        /* =============================================
+           PARTICLES
+           ============================================= */
+        #particles {
+            position: fixed;
+            top: 0; left: 0; z-index: -1;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        /* =============================================
+           SCROLL ANIMATIONS — Staggered + Deep
+           ============================================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px) scale(0.97);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .reveal-delay-1 { transition-delay: 0.12s; }
+        .reveal-delay-2 { transition-delay: 0.24s; }
+        .reveal-delay-3 { transition-delay: 0.36s; }
+
+        /* =============================================
+           RESPONSIVE
+           ============================================= */
+        @media (max-width: 900px) {
+            .hero-text h1 { letter-spacing: -2px; }
+            .hero-img { aspect-ratio: 16/9; }
+            .bento { grid-template-columns: 1fr; }
+            .card-large, .card-medium, .card-full { grid-column: span 1; }
+            header { padding: 8px 16px; }
+            .logo-text .name { font-size: 16px; }
+            .btn-mode { padding: 8px 14px; font-size: 9px; }
+            .orb-1 { width: 200px; height: 200px; }
+            .orb-2 { width: 150px; height: 150px; }
+            .orb-3 { display: none; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 110px 12px 30px; }
+            .hero-text h1 { font-size: 36px; letter-spacing: -1.5px; }
+            .card { padding: 22px; }
+            h3 { font-size: 20px; }
+            .stat-number { font-size: 56px; }
+            footer { padding: 40px 16px 24px; }
+        }
+    </style>
+</head>
+
+<body id="body">
+
+    <!-- Ambient Depth Orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <canvas id="particles"></canvas>
+
+    <!-- =============================================
+         HEADER
+         ============================================= -->
+    <header class="glass" id="main-header">
+        <div class="logo-group" onclick="logoTrigger()">
+            <svg class="logo-crest" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg" id="logo-svg">
+                <path class="crest-fill" d="M50 2 L95 20 L95 70 Q95 100 50 118 Q5 100 5 70 L5 20 Z"/>
+                <path class="crest-gold" d="M50 8 L89 24 L89 68 Q89 95 50 112 Q11 95 11 68 L11 24 Z" fill="none" stroke-width="2" style="stroke: var(--gold);"/>
+                <path class="crest-dark" d="M50 12 L85 26 L85 66 Q85 92 50 108 Q15 92 15 66 L15 26 Z"/>
+                <rect class="crest-gold" x="48" y="22" width="4" height="55" rx="2" opacity="0.4"/>
+                <rect class="crest-gold" x="44" y="30" width="3" height="1.5" rx="0.5" opacity="0.3"/>
+                <rect class="crest-gold" x="53" y="38" width="3" height="1.5" rx="0.5" opacity="0.3"/>
+                <rect class="crest-gold" x="44" y="46" width="3" height="1.5" rx="0.5" opacity="0.3"/>
+                <rect class="crest-gold" x="53" y="54" width="3" height="1.5" rx="0.5" opacity="0.3"/>
+                <text x="50" y="58" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="900" font-size="28" class="crest-white" letter-spacing="-2">MH</text>
+                <circle class="crest-fill" cx="24" cy="50" r="10"/>
+                <text x="24" y="55" text-anchor="middle" font-family="serif" font-size="14" class="crest-white" font-weight="700">π</text>
+                <circle class="crest-fill" cx="76" cy="50" r="10"/>
+                <text x="76" y="55" text-anchor="middle" font-family="serif" font-size="12" class="crest-white" font-weight="700">∞</text>
+                <path class="crest-dark" d="M40 90 Q45 85 50 90 Q55 85 60 90" fill="none" stroke-width="3" style="stroke: var(--gold);" stroke-linecap="round"/>
+                <path class="crest-dark" d="M42 95 L50 100 L58 95" fill="none" stroke-width="2.5" style="stroke: var(--gold);" stroke-linecap="round"/>
+                <path class="crest-gold" d="M35 18 L50 10 L65 18" fill="none" stroke-width="2" style="stroke: var(--gold);" stroke-linecap="round"/>
+            </svg>
+            <div class="logo-text">
+                <div class="name">MINH HUY</div>
+                <div class="subtitle">The Balanced Equation</div>
+            </div>
+        </div>
+        <button id="mode-btn" class="btn-mode" onclick="toggleMode()">Mode Học Thuật</button>
+    </header>
+
+    <div class="container">
+
+        <!-- HERO -->
+        <section class="hero reveal" id="hero">
+            <div class="hero-text">
+                <h1>TRẦN <span class="highlight">MINH HUY</span></h1>
+                <p class="hero-slogan">
+                    <strong>Toán học</strong> là ngôn ngữ, <strong>Karate</strong> là bản lĩnh,
+                    <strong>Giáo viên</strong> là ước mơ.
+                </p>
+                <div class="hero-badges">
+                    <span class="hero-badge">🎓 Lớp 9/9 NTP</span>
+                    <span class="hero-badge">🏅 Giải Nhì TP</span>
+                    <span class="hero-badge">🥋 Huyền Đai</span>
+                    <span class="hero-badge">⚽ Fan MU</span>
+                </div>
+            </div>
+            <div class="hero-img-wrapper">
+                <img src="huy-tot-nghiep.jpg" class="hero-img" alt="Lễ Tri Ân & Trưởng Thành - THCS Nguyễn Tri Phương 2026">
+            </div>
+        </section>
+
+        <!-- BENTO GRID — ALL IN ONE -->
+        <div class="bento" id="bento-grid">
+
+            <!-- Giải Nhì TP -->
+            <div class="card card-large glass reveal">
+                <span class="badge">🏆 Top Achievement</span>
+                <h3>GIẢI NHÌ THÀNH PHỐ</h3>
+                <p style="opacity: 0.65; font-weight: 500; font-size: 14px; line-height: 1.5;">
+                    Học sinh giỏi Giải toán trên Máy tính cầm tay cấp Thành phố — NH 2025-2026
+                </p>
+                <img src="giay-khen.jpg" class="card-img" alt="Giấy khen Giải Nhì Thành phố">
+            </div>
+
+            <!-- 09 năm HSXS -->
+            <div class="card glass reveal reveal-delay-1"
+                style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <div class="stat-number">09</div>
+                <div class="stat-label">NĂM LIỀN<br>HỌC SINH XUẤT SẮC</div>
+            </div>
+
+            <!-- Karate -->
+            <div class="card glass reveal reveal-delay-2"
+                style="display: flex; flex-direction: column; justify-content: flex-end;">
+                <div style="font-size: 10px; font-weight: 900; opacity: 0.45; margin-bottom: 6px; letter-spacing: 2px;">MARTIAL ARTS</div>
+                <div style="font-size: 22px; font-weight: 900; letter-spacing: -0.5px;">KARATE<br>BLACK BELT 🥋</div>
+            </div>
+
+            <!-- Trường NTP -->
+            <div class="card card-medium glass reveal reveal-delay-1"
+                style="display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+                <div>
+                    <div style="font-size: 10px; font-weight: 900; opacity: 0.45; margin-bottom: 5px; letter-spacing: 2px;">SECONDARY SCHOOL</div>
+                    <div style="font-size: 22px; font-weight: 900;">NGUYỄN TRI PHƯƠNG</div>
+                    <div style="font-size: 11px; opacity: 0.35; margin-top: 3px;">P.Diên Hồng — TP.HCM</div>
+                </div>
+                <img src="logo-ntp.jpg" style="width: 90px; border-radius: 14px; filter: drop-shadow(0 8px 20px rgba(0,0,0,0.3));" alt="Logo NTP">
+            </div>
+
+            <!-- Nhạc Chó Câu Viral -->
+            <div class="card card-medium glass reveal reveal-delay-2">
+                <div class="music-label">
+                    <span class="emoji">🐕‍🦺🎣</span>
+                    <div>
+                        <span class="badge" style="margin-bottom: 0;">🔥 Viral Hit</span>
+                    </div>
+                </div>
+                <h3 style="font-size: 22px; margin-bottom: 12px;">Nhạc Chó Câu Viral</h3>
+                <div class="spotify-bento">
+                    <iframe style="border-radius:12px"
+                        src="https://open.spotify.com/embed/album/1PcVnGylH7vOraRn4mGSF5?utm_source=generator"
+                        width="100%" height="152" frameBorder="0" allowfullscreen=""
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <!-- YouTube Cô Giáo -->
+            <div class="card card-full glass reveal reveal-delay-3" style="padding-bottom: 20px;">
+                <div class="youtube-label">
+                    <span class="emoji">👩‍🏫</span>
+                    <div>
+                        <h3 style="font-size: 20px; margin-bottom: 2px;">Kỷ Niệm Cô Giáo & Ngày Ra Trường</h3>
+                        <div style="font-size: 12px; opacity: 0.45; font-style: italic;">THCS Nguyễn Tri Phương — Niên khóa 2022-2026</div>
+                    </div>
+                </div>
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div class="video-wrapper" id="yt-container">
+                        <iframe id="yt-iframe"
+                            src="https://www.youtube.com/embed/0gkUhRV12V8?si=txAW_UF5-sTyazXa"
+                            title="Kỷ niệm cô giáo ngày ra trường"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen></iframe>
+                        <a class="yt-fallback" id="yt-fallback" href="https://www.youtube.com/watch?v=0gkUhRV12V8" target="_blank" rel="noopener">
+                            <div class="play-icon">▶</div>
+                            <span>Xem trên YouTube</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="glass reveal">
+            <div class="footer-label">Message From Dad</div>
+            <div class="footer-message">
+                "Cố lên con trai,<br>Ba luôn tự hào về con! 🚩"
+            </div>
+            <div class="footer-sub">GGMU — Glory Glory Man United!</div>
+            <div class="footer-year">© 2026 — THE BALANCED EQUATION — TRẦN MINH HUY</div>
+        </footer>
+    </div>
+
+    <!-- =============================================
+         JAVASCRIPT
+         ============================================= -->
+    <script>
+        // ========================================
+        // 1. TOGGLE MODE
+        // ========================================
+        function toggleMode() {
+            document.body.classList.toggle('blue-mode');
+            document.getElementById('mode-btn').innerText =
+                document.body.classList.contains('blue-mode') ? "Mode MU Đỏ 🔴" : "Mode Học Thuật 🔵";
+        }
+
+        // ========================================
+        // 2. GGMU EASTER EGG
+        // ========================================
+        let clickCount = 0, clickTimer = null;
+        function logoTrigger() {
+            clickCount++;
+            const logo = document.querySelector('.logo-crest');
+            logo.style.transform = "scale(1.4) rotate(12deg)";
+            logo.style.filter = `drop-shadow(0 0 30px var(--primary-glow))`;
+            setTimeout(() => { logo.style.transform = ""; logo.style.filter = ""; }, 300);
+            if (clickCount >= 3) { toggleMode(); clickCount = 0; clearTimeout(clickTimer); return; }
+            clearTimeout(clickTimer);
+            clickTimer = setTimeout(() => { clickCount = 0; }, 2000);
+        }
+
+        // ========================================
+        // 3. GGMU KEYBOARD
+        // ========================================
+        let keyBuf = '';
+        document.addEventListener('keydown', e => {
+            keyBuf += e.key.toLowerCase();
+            if (keyBuf.length > 10) keyBuf = keyBuf.slice(-10);
+            if (keyBuf.includes('ggmu')) { toggleMode(); keyBuf = ''; }
+        });
+
+        // ========================================
+        // 4. MATH PARTICLES
+        // ========================================
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        const syms = ['π','∞','∑','√','Δ','∫','MH','x²','sin','θ','±','∂'];
+        let parts = [];
+
+        function initP() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            parts = [];
+            const n = Math.min(40, Math.floor(window.innerWidth / 30));
+            for (let i = 0; i < n; i++) {
+                parts.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    t: syms[Math.floor(Math.random() * syms.length)],
+                    vy: -(Math.random() * 0.3 + 0.06),
+                    vx: (Math.random() - 0.5) * 0.1,
+                    s: Math.random() * 7 + 12,
+                    o: Math.random() * 0.22 + 0.06
+                });
+            }
+        }
+
+        function drawP() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const blue = document.body.classList.contains('blue-mode');
+            parts.forEach(p => {
+                ctx.font = `bold ${p.s}px Inter, Arial`;
+                ctx.fillStyle = blue
+                    ? `rgba(37,99,235,${p.o})`
+                    : `rgba(218,41,28,${p.o})`;
+                ctx.fillText(p.t, p.x, p.y);
+                p.y += p.vy; p.x += p.vx;
+                if (p.y < -30) { p.y = canvas.height + 30; p.x = Math.random() * canvas.width; }
+                if (p.x < -30) p.x = canvas.width + 30;
+                if (p.x > canvas.width + 30) p.x = -30;
+            });
+            requestAnimationFrame(drawP);
+        }
+        window.addEventListener('resize', initP);
+        initP(); drawP();
+
+        // ========================================
+        // 5. SCROLL REVEAL
+        // ========================================
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+        // ========================================
+        // 6. HEADER SCROLL
+        // ========================================
+        window.addEventListener('scroll', () => {
+            const h = document.getElementById('main-header');
+            const s = window.pageYOffset > 80;
+            h.style.borderRadius = s ? '14px' : '20px';
+            h.style.padding = s ? '6px 18px' : '10px 24px';
+        }, { passive: true });
+
+        // ========================================
+        // 7. 3D TILT ON BENTO CARDS (mouse parallax)
+        // ========================================
+        document.querySelectorAll('.bento .card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                card.style.transform = `
+                    translateY(-8px) scale(1.015)
+                    rotateY(${x * 6}deg)
+                    rotateX(${-y * 6}deg)
+                `;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+
+        // 8. (Hero parallax removed — clean static image)
+
+        // ========================================
+        // 9. YOUTUBE FALLBACK (file:// protocol)
+        // ========================================
+        if (window.location.protocol === 'file:') {
+            const fb = document.getElementById('yt-fallback');
+            const iframe = document.getElementById('yt-iframe');
+            if (fb && iframe) {
+                iframe.style.display = 'none';
+                fb.style.display = 'flex';
+            }
+        }
+    </script>
+</body>
+
+</html>

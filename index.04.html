@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trần Minh Huy - Portfolio 2026</title>
+    <!-- Font cao cấp -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;900&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #f0f4f8;
+            --primary: #3b82f6;
+            --text: #1e293b;
+            --glass: rgba(255, 255, 255, 0.45);
+            --border: rgba(255, 255, 255, 0.6);
+            --shadow: rgba(0, 0, 0, 0.05);
+            --gradient: linear-gradient(135deg, #e0e7ff 0%, #f1f5f9 100%);
+        }
+
+        /* DARK MODE - GGMU RED */
+        .ggmu-mode {
+            --bg: #0a0a0a;
+            --primary: #da291c;
+            --text: #ffffff;
+            --glass: rgba(20, 20, 20, 0.6);
+            --border: rgba(218, 41, 28, 0.3);
+            --shadow: rgba(218, 41, 28, 0.1);
+            --gradient: linear-gradient(135deg, #0f0f0f 0%, #1a0a0a 100%);
+        }
+
+        * { box-sizing: border-box; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--gradient);
+            background-attachment: fixed;
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* Hiệu ứng kính */
+        .glass {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 32px 0 var(--shadow);
+            border-radius: 24px;
+        }
+
+        header {
+            position: fixed;
+            top: 20px; left: 50%;
+            transform: translateX(-50%);
+            width: 90%; max-width: 1200px;
+            padding: 12px 25px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+        }
+
+        .hexagon {
+            width: 45px; height: 50px;
+            background: var(--primary);
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            display: flex; justify-content: center; align-items: center;
+            color: white; font-weight: 900;
+        }
+
+        .btn-mode {
+            background: var(--primary);
+            color: white; border: none;
+            padding: 10px 18px; border-radius: 12px;
+            font-weight: 800; font-size: 11px;
+            text-transform: uppercase; letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 150px 20px 100px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+
+        .hero-text h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(40px, 8vw, 90px);
+            margin: 0; line-height: 0.85;
+            letter-spacing: -4px;
+        }
+
+        .hero-text span {
+            color: var(--primary);
+            display: block;
+        }
+
+        .hero-img {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border-radius: 40px;
+            box-shadow: 20px 20px 60px var(--shadow);
+            border: 8px solid var(--glass);
+        }
+
+        /* BENTO GRID */
+        .bento {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .card { padding: 40px; position: relative; overflow: hidden; }
+
+        .card-large { grid-column: span 2; grid-row: span 2; }
+        .card-medium { grid-column: span 2; }
+
+        h3 { font-weight: 900; font-size: 32px; margin: 0 0 15px; text-transform: uppercase; }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 10px;
+            font-weight: 900;
+            background: var(--primary);
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        /* Spotify Player */
+        .spotify-container {
+            grid-column: span 4;
+            margin-top: 20px;
+            border-radius: 32px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        footer {
+            margin-top: 100px;
+            padding: 80px;
+            text-align: center;
+        }
+
+        /* Hiệu ứng hạt Toán học */
+        #particles {
+            position: fixed; top: 0; left: 0; z-index: -1;
+            width: 100%; height: 100%; pointer-events: none;
+            opacity: 0.3;
+        }
+
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: 1fr; text-align: center; }
+            .bento { grid-template-columns: 1fr; }
+            .card-large, .card-medium, .spotify-container { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body id="body">
+
+    <canvas id="particles"></canvas>
+
+    <header class="glass">
+        <div class="logo-group" onclick="logoTrigger()">
+            <div class="hexagon" id="hex">MH</div>
+            <div style="line-height: 1">
+                <div style="font-weight: 900; font-size: 18px;">MINH HUY</div>
+                <div style="font-size: 9px; font-weight: 700; opacity: 0.5; letter-spacing: 1px;">THE RED DEVIL MATHLETE</div>
+            </div>
+        </div>
+        <button class="btn-mode shadow" onclick="toggleMode()">Mode MU</button>
+    </header>
+
+    <div class="container">
+        <!-- Section Hero -->
+        <section class="hero">
+            <div class="hero-text">
+                <h2>TRẦN <span>MINH HUY</span></h2>
+                <p style="font-size: 20px; font-weight: 500; opacity: 0.7; margin-top: 30px; max-width: 500px;">
+                    Lớp 9/9 Nguyễn Tri Phương. Đai đen Karate, đam mê toán học & ước mơ trở thành người dẫn dắt tri thức.
+                </p>
+            </div>
+            <img src="huy-tot-nghiep.jpg" class="hero-img" alt="Huy">
+        </section>
+
+        <!-- Section Bento -->
+        <div class="bento">
+            <div class="card card-large glass">
+                <span class="badge">Top Achievement</span>
+                <h3>GIẢI NHÌ THÀNH PHỐ</h3>
+                <p style="opacity: 0.7; font-weight: 500;">Học sinh giỏi Giải toán trên máy tính cầm tay cấp Thành phố năm học 2025-2026.</p>
+                <img src="giay-khen.jpg" style="width: 100%; border-radius: 20px; margin-top: 30px; filter: contrast(1.1);">
+            </div>
+
+            <div class="card glass" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <div style="font-size: 80px; font-weight: 900; color: var(--primary);">09</div>
+                <div style="font-size: 10px; font-weight: 900; opacity: 0.5; text-align: center;">NĂM LIỀN HỌC SINH XUẤT SẮC</div>
+            </div>
+
+            <div class="card glass" style="background: var(--text); color: var(--bg); display: flex; flex-direction: column; justify-content: flex-end;">
+                <div style="font-size: 10px; font-weight: 900; opacity: 0.5; margin-bottom: 5px;">MARTIAL ARTS</div>
+                <div style="font-size: 24px; font-weight: 900;">KARATE BLACK BELT</div>
+            </div>
+
+            <div class="card card-medium glass" style="display: flex; align-items: center; justify-content: space-between;">
+                <div>
+                    <div style="font-size: 10px; font-weight: 900; opacity: 0.5;">SECONDARY SCHOOL</div>
+                    <div style="font-size: 24px; font-weight: 900;">NGUYỄN TRI PHƯƠNG</div>
+                </div>
+                <img src="logo-ntp.jpg" style="width: 100px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));">
+            </div>
+
+            <!-- Spotify Player -->
+            <div class="spotify-container glass">
+                <iframe style="border-radius:0px" src="https://open.spotify.com/embed/album/1PcVnGylH7vOraRn4mGSF5?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+        </div>
+
+        <footer class="glass">
+            <div style="font-size: 10px; font-weight: 900; opacity: 0.4; letter-spacing: 5px; margin-bottom: 20px;">MESSAGE FROM DAD</div>
+            <div style="font-size: 32px; font-weight: 900; font-style: italic; opacity: 0.8;">"Cố lên con trai, GGMU! 🚩"</div>
+        </footer>
+    </div>
+
+    <script>
+        // 1. CHẾ ĐỘ MU (CHẠY 100%)
+        function toggleMode() {
+            document.body.classList.toggle('ggmu-mode');
+            console.log("Mode toggled");
+        }
+
+        // 2. CLICK LOGO 3 LẦN
+        let clicks = 0;
+        function logoTrigger() {
+            clicks++;
+            document.getElementById('hex').style.transform = "scale(1.3)";
+            setTimeout(() => { document.getElementById('hex').style.transform = "scale(1)"; }, 150);
+            
+            if(clicks >= 3) {
+                toggleMode();
+                clicks = 0;
+            }
+            setTimeout(() => { clicks = 0; }, 2000);
+        }
+
+        // 3. HIỆU ỨNG TOÁN HỌC TRÊN NỀN
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        let symbols = ['π', '∞', '∑', '√', 'Δ', '∫', 'MH', 'MU'];
+        let parts = [];
+
+        function init() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            parts = [];
+            for(let i=0; i<40; i++) {
+                parts.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    txt: symbols[Math.floor(Math.random()*symbols.length)],
+                    v: Math.random() * 0.5 + 0.2
+                });
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0,0,canvas.width, canvas.height);
+            ctx.font = "15px Arial";
+            ctx.fillStyle = document.body.classList.contains('ggmu-mode') ? "rgba(218, 41, 28, 0.2)" : "rgba(59, 130, 246, 0.2)";
+            parts.forEach(p => {
+                ctx.fillText(p.txt, p.x, p.y);
+                p.y -= p.v;
+                if(p.y < -20) p.y = canvas.height + 20;
+            });
+            requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('resize', init);
+        init(); draw();
+    </script>
+</body>
+</html>
